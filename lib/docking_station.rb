@@ -5,4 +5,13 @@ class DockingStation
     Bike.new
   end
 
+
+  def dock
+  end
+
 end
+
+# feature test for docking a bike
+# ds = DockingStation.new
+# redbike = Bike.new
+# ds.dock(redbike)

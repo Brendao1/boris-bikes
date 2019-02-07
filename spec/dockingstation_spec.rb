@@ -13,4 +13,13 @@ describe DockingStation do
     bike = subject.release_bike
     expect(bike.working?).to eq true
   end
+
+  it 'responds to the :dock command' do
+    ds = DockingStation.new
+    expect(subject).to respond_to(:dock)
+  end
+  # it 'should dock a bike to docking station' do
+  #   ds = DockingStation.new
+  # end
+
 end
