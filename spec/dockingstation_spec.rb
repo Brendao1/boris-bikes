@@ -18,8 +18,11 @@ describe DockingStation do
     ds = DockingStation.new
     expect(subject).to respond_to(:dock)
   end
-  # it 'should dock a bike to docking station' do
-  #   ds = DockingStation.new
-  # end
+
+   it 'should dock a bike to docking station and return a bike' do
+     ds = DockingStation.new
+     bike = Bike.new
+     expect(subject.dock(bike)).to eq bike
+  end
 
 end
