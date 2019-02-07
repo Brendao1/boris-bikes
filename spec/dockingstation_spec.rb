@@ -4,15 +4,23 @@ describe DockingStation do
     expect(subject).to respond_to(:release_bike)
   end
 
-
-  it 'should return a Bike when asked to release bike' do
-    expect(subject.release_bike).to be_a Bike
+  describe '#release_bike' do
+    it 'releases a bike' do
+      bike = Bike.new
+      subject.dock(bike)
+      expect(subject.release_bike).to eq bike
+    end
   end
 
-  it 'should return a working bike when asked to release bike' do
-    bike = subject.release_bike
-    expect(bike.working?).to eq true
-  end
+
+  # it 'should return a Bike when asked to release bike' do
+  #   expect(subject.release_bike).to be_a Bike
+  # end
+  # 
+  # it 'should return a working bike when asked to release bike' do
+  #   bike = subject.release_bike
+  #   expect(bike.working?).to eq true
+  # end
 
   it 'responds to the :dock command' do
     ds = DockingStation.new
