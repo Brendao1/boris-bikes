@@ -18,7 +18,7 @@ class DockingStation
 
 
   def dock(bike)
-    if @bikes.size == 1
+    if @bikes.size == 20
       raise ArgumentError, "Dock is full"
     else
       @bikes << bike
