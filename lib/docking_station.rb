@@ -7,8 +7,12 @@ class DockingStation
     @bikes = []
   end
 
+def check
+  check = @bikes.size
+end
+
   def release_bike
-    if @bikes.empty?
+    if check == 0
       raise ArgumentError, "No bikes available"
     else
       @bikes.pop()
@@ -18,7 +22,7 @@ class DockingStation
 
 
   def dock(bike)
-    if @bikes.size == 20
+    if check == 20
       raise ArgumentError, "Dock is full"
     else
       @bikes << bike
