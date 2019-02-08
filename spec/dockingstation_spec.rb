@@ -42,10 +42,10 @@ describe DockingStation do
   end
 
   it 'should not dock a bike if station is full' do
-    ds = DockingStation.new
+    ds = DockingStation.new(10)
     bike = Bike.new
-    20.times {ds.dock(bike)}
-    expect { ds.dock(bike) }.to raise_error(ArgumentError,'Dock is full')
+    10.times{ds.dock(bike)}
+    expect { ds.dock(bike)}.to raise_error(ArgumentError, "Dock is full")
   end
 
 
