@@ -7,10 +7,6 @@ class DockingStation
     @bikes = []
   end
 
-# def check
-#   check = @bikes.size
-# end
-
 def full?
  if @bikes.size == 20
    true
@@ -35,7 +31,7 @@ end
       @bikes.pop()
     end
   end
-
+  private :full?, :vacant?
 
   def dock(bike)
     if full?
