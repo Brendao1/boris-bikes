@@ -1,19 +1,28 @@
 require_relative 'bike'
 
 class DockingStation
-  attr_reader :bike
+  attr_reader :bikes
+
+  def initialize()
+    @bikes = []
+  end
 
   def release_bike
-    fail 'No bikes available' unless @bike
-    @bike
-end
+    if @bikes.empty?
+      raise ArgumentError, "No bikes available"
+    else
+      @bikes.pop()
+    end
+  end
 
 
 
   def dock(bike)
-    @bike = bike
-    # we want the dock method to return a bike so that
-    # it passes the unit test.
+    if @bikes.size == 1
+      raise ArgumentError, "Dock is full"
+    else
+      @bikes << bike
+    end
   end
 
 end

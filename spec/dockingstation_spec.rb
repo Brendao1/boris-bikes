@@ -1,4 +1,5 @@
 require 'docking_station'
+
 describe DockingStation do
   it 'should respond to release_bike command' do
     expect(subject).to respond_to(:release_bike)
@@ -12,7 +13,7 @@ describe DockingStation do
     end
 
     it 'raises an error when there is no bike' do
-      expect { subject.release_bike }.to raise_error 'No bikes available'
+      expect { subject.release_bike }.to raise_error(ArgumentError,'No bikes available')
     end
   end
 
@@ -36,7 +37,15 @@ describe DockingStation do
    it 'should dock a bike to docking station and return a bike' do
      ds = DockingStation.new
      bike = Bike.new
-     expect(subject.dock(bike)).to eq bike
+     expect(subject.dock(bike)).to eq subject.bikes
+     # the subject is the ds. dock method returns the @bikes array, not the bike
+  end
+
+  it 'should not dock a bike if station is full' do
+    ds = DockingStation.new
+    bike = Bike.new
+    ds.dock(bike)
+    expect { ds.dock(bike) }.to raise_error(ArgumentError,'Dock is full')
   end
 
 end
